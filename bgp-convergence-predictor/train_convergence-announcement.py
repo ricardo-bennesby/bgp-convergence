@@ -51,18 +51,12 @@ peers_list = ['45.61.0.85', '80.77.16.114', '98.159.46.1', '146.228.1.3', '165.2
 #list_peers = [0,2,6,7,9,10,13,14,16]
 list_peers = [0,2,3,6,7,9,10,11,12,13,14,16,17,18,19]
 list_peers = [0,6,7,9,10,13,14,18,19]
-#list_peers = [9]
-#to fix peers: 
-#num_days = 102
-#num_days = 111
-#num_days = 97 #predict 08
+
 num_days = 95
 num_days = 103
 num_days = 98
 
-#list_peers = [19]
 num_events = 12
-#num_days = 1
 test_num_days = 1
 seq_length = 300
 num_features = 16
@@ -91,8 +85,8 @@ for peer_id_index in range(0,len(list_peers)):
 	y_timestamps = []
 	print("TRAINING PEER "+str(peer_id))
 	print("TRAINING PEER "+str(peers_list[peer_id]))
-	dataset = read_csv('/home/ricardo/ripe/databases_updates/timestamps-'+peers_list[peer_id]+'.csv')
-	#dataset = read_csv('/home/ricardo/ripe/databases_updates/test-timestamps-'+peers_list[peer_id]+'.csv')
+	dataset = read_csv('../datasets/timestamps-'+peers_list[peer_id]+'.csv')
+
 	values = dataset.values
 	print("len(values):")
 	print(len(values))
@@ -102,12 +96,9 @@ for peer_id_index in range(0,len(list_peers)):
 	print("num_timestamps:")
 	print(num_timestamps)
 
-	dataset_y = read_csv('/home/ricardo/ripe/databases_updates/times_after-'+peers_list[peer_id]+'.csv')
-	#dataset_y = read_csv('/home/ricardo/ripe/databases_updates/test-times_after-'+peers_list[peer_id]+'.csv')
-	values_y = dataset_y.values
+	dataset_y = read_csv('../datasets/times_after-'+peers_list[peer_id]+'.csv')
 
-	#print("values_y:")
-	#print(values_y)
+	values_y = dataset_y.values
 
 	last_index = 0
 	new_index = 0
@@ -117,10 +108,6 @@ for peer_id_index in range(0,len(list_peers)):
 		event_announc = [1,3,5,7,9,11]
 		previous_index = 1
 		for index in range(new_index,len(values_y)):
-			'''print("values_y[index][0]:")
-			print(values_y[index][0]) 
-			print("-- current_index_count:")
-			print(current_index_count)'''
 			if current_index_val != values_y[index][0]:
 				current_index_count = 1
 				current_index_val = values_y[index][0]
