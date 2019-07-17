@@ -96,7 +96,7 @@ except IOError:
 	x = 1'''
 
 peers_list = []
-peers_list_file_csv = read_csv('/home/ricardo/ripe/databases_updates/peers_set.csv', header=None)
+peers_list_file_csv = read_csv('peers_set.csv', header=None)
 for peer_ip in peers_list_file_csv.values:
 	#peers_list.add(announcement.tolist()[0])
 	peers_list.append(peer_ip.tolist()[0])
