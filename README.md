@@ -3,36 +3,29 @@ BGP convergence time prediction by using LSTM networks
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-
-After cloning this project
+After cloning this project, follow the instructions to test the model and get new data: 
 
 ### Prerequisites
 
-The software tools you should install as a prerequisite to the MRAI-pred Framework:
+The software tools you should install as a prerequisite to the BGP Convergence Prediction Mechanism:
 
 * [Keras with Tensorflow backend](https://www.pyimagesearch.com/2016/11/14/installing-keras-with-tensorflow-backend/)
 * [ExaBGP](https://github.com/Exa-Networks/exabgp)
 
-## Running the tests
+### Preparing data to train and test the model
 
-Explain how to run the automated tests for this system
+First, generate the train and test dataset files:
 
-### Break down into end to end tests
+```console
+$ cd datasets
 
-Explain what these tests test and why
-
-```
-Give an example
+$ python create_datasets_peers.py
 ```
 
-### And coding style tests
 
-Explain what these tests test and why
+#### Getting new raw data
 
-```
-Give an example
-```
+
 
 ## Authors
 
