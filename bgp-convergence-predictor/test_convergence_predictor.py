@@ -45,28 +45,12 @@ base_time = ['00:00:00','02:00:00','04:00:00','06:00:00','08:00:00','10:00:00','
 
 peers_list = ['45.61.0.85', '80.77.16.114', '98.159.46.1', '146.228.1.3', '165.254.255.2', '168.195.130.2', '176.12.110.8', '178.255.145.243', '185.193.84.191', '192.102.254.1', '193.0.0.56', '193.138.216.164', '193.150.22.1', '193.160.39.1', '195.47.235.100', '203.119.104.1', '203.123.48.6', '208.51.134.248', '212.25.27.44', '213.200.87.254','203.119.76.5','111.91.233.1','12.0.1.63','182.54.128.2','79.143.241.12','202.12.28.1'] 
 
-#for peer_id in range(0,len(peers_list)):
-#peer_id = 15
-#list_peers = [0,2,3,6,7,10,11,12,13,14,15,16,17,18,19,20,22]
-#list_peers = [0,2,3,6,7,10,12,13,14]
-#list_peers = [0,2,3,6,7,9,10,12]
-list_peers = [0,2,3,6,7,9,10,11,12,13,14,16,17,18,19]
-
 list_peers = [0,6,7,9,10,13,14,18,19]
 
-#list_peers = [0,6,7,10,13,14]
-#list_peers = [0,7,10,13,14]
-#list_peers = [4]
-#to fix peers: 
-#num_days = 97
-
-#list_peers = [19]
 num_events = 12
-#num_days = 1
 test_num_days = 1
 seq_length = 300
 num_features = 16
-#num_epochs = 500
 list_models = []
 
 #WORKING FOR MONTH 6:
@@ -135,13 +119,13 @@ for day in day_list:
 		peer_id = list_peers[peer_id_index]
 		#print("TEST PEER "+str(peer_id))
 		print("PEER "+str(peers_list[peer_id]))
-		test_dataset = read_csv('/home/ricardo/ripe/databases_updates/test-timestamps-'+day+"-"+peers_list[peer_id]+'.csv')
+		test_dataset = read_csv('../datasets/test-timestamps-'+day+"-"+peers_list[peer_id]+'.csv')
 		test_values = test_dataset.values
 		num_timestamps = (len(test_values))/((num_events*test_num_days))
 		#print("num_timestamps:")
 		#print(num_timestamps)
 
-		test_dataset_y = read_csv('/home/ricardo/ripe/databases_updates/test-times_after-'+day+"-"+peers_list[peer_id]+'.csv')
+		test_dataset_y = read_csv('../datasets/test-times_after-'+day+"-"+peers_list[peer_id]+'.csv')
 		test_values_y = test_dataset_y.values
 
 		#print("test-values_y:")
@@ -525,8 +509,8 @@ for day in day_list:
 				#if int(prediction_list[peer_index][num_event][ct]) != 0:
 				ct_list.append(int(prediction_list[peer_index][num_event][ct]))
 				prediction_event.append(int(prediction_list[peer_index][num_event][ct]))
-		print("predicted_list:")
-		print(ct_list)
+		#print("predicted_list:")
+		#print(ct_list)
 		if len(ct_list) > 0:
 			max_timestamp =  max(ct_list)
 			min_timestamp =  min(ct_list)
@@ -552,8 +536,8 @@ for day in day_list:
 				#if int(target_list[peer_index][num_event][ct]) != 0:
 				t_list.append(int(target_list[peer_index][num_event][ct]))
 				target_event.append(int(target_list[peer_index][num_event][ct]))
-		print("target_list:")
-		print(t_list)
+		#print("target_list:")
+		#print(t_list)
 		if len(t_list) > 0:
 			max_timestamp =  max(t_list)
 			min_timestamp =  min(t_list)
