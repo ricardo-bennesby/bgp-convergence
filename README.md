@@ -9,8 +9,8 @@ After cloning this project, follow the instructions to test the model and get ne
 
 The software tools you should install as a prerequisite to the BGP Convergence Prediction Mechanism:
 
+* [Python Data Science libraries](https://www.codecademy.com/articles/install-python-data-analysis)
 * [Keras with Tensorflow backend](https://www.pyimagesearch.com/2016/11/14/installing-keras-with-tensorflow-backend/)
-* [ExaBGP](https://github.com/Exa-Networks/exabgp)
 
 ### Preparing data to train and test the model
 
