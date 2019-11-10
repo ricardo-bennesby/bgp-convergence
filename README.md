@@ -80,7 +80,43 @@ The list of peers must be the same in both train_convergence-announcement.py and
 
 #### Getting new raw data
 
+To download new data, first create a folder to where updates will be downloaded to:
 
+```console
+$ mkdir ~/bgp-convergence/beacon_14-08-2019
+$ cd ~/bgp-convergence/beacon_14-08-2019
+$ cp ../download_raw_updates/ripe/* ./
+```
+
+Open file get_ripe_files.sh and modifiy lines 3 and 7 to:
+```
+ updates="updates.20190814*"
+ wget -A $updates -r -np -nc -l1 --no-check-certificate -e robots=off http://data.ris.ripe.net/rrc$x/2019.08/
+```
+
+Then, run the script:
+
+```console
+$ ./get_ripe_files.sh
+```
+
+The downloaded files are extracted and converted from the MRT format to txt files:
+Edit the files extract_files.sh and list_files.py before run the following command:
+
+```console
+$ ./extract_files.sh
+```
+
+After the above step, the script search_prefix.sh should search and filter the beacon prefix announced at predefined schedule from beacon project. This can me modified to another prefix, at line 9 from search_prefix.sh file. The file tracklinePrefix.py should also be modified according to the number of extracted files in the folder for each rrc. Run:
+
+Folders named bases_beacon_rrc00, bases_beacon_rrc01, bases_beacon_rrc03, etc. will be created with the filtered files. Those files will be used to calculate the convergence time and label the datasets.
+
+To generate the files that collect the features from downloaded updates, run:
+
+```console
+$ python process_new_updates.py 
+```
+Finally, the generated files should be moved to the datasets folder, to train and test the model with the new data.
 
 ## Authors
 
