@@ -19,7 +19,6 @@ To generate the train and test dataset files with the downloaded updates:
 
 ```console
 $ cd datasets
-
 $ python create_datasets_peers.py
 ```
 
@@ -27,7 +26,6 @@ To train the model with the generated dataset use the commands:
 
 ```console
 $ cd ../bgp-convergence
-
 $ python train_convergence-announcement.py 
 ```
 The train dataset in composed of updates collected from month 6 (using 27 days), month 7 (using 29 days), month 8 (using 27 days), and month 9 (using 22 days). 
@@ -39,14 +37,15 @@ The test dataset is composed of updates collected from month 10.
 To test the model with the generated model wights use the command:
 
 ```console
-
 $ python test_convergence_predictor.py 
 ```
+
 The output shows:
 * The test day:
 ```
   ### TEST DATASET DAY 02-10 ### 
 ```
+
 * The list of peers:
 ```
   PEER 45.61.0.85
